@@ -139,8 +139,9 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 					rule.append({prop: 'height', value: valueHeight});
 				}
 
-				if (options.backgroundSize && options.retina && !CSSBGSize) {
-					rule.append({prop: 'background-size', value: valueWidth + ' ' + valueHeight});
+				if (options.backgroundSize && !CSSBGSize) {
+					rule.append({prop: 'background-size', value: '100% 100%'});
+					rule.append({prop: 'background-repeat', value: 'no-repeat'});
 				}
 			});
 		});
