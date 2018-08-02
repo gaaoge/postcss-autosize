@@ -132,15 +132,15 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 				}
 
 				if (options.width && !CSSWidth) {
-					rule.append({prop: 'width', value: valueWidth});
+					rule.insertBefore(decl, {prop: 'width', value: valueWidth});
 				}
 
 				if (options.height && !CSSHeight) {
-					rule.append({prop: 'height', value: valueHeight});
+					rule.insertBefore(decl, {prop: 'height', value: valueHeight});
 				}
 
 				if (options.backgroundSize && !CSSBGSize) {
-					rule.append({prop: 'background-size', value: '100% 100%'});
+					rule.insertAfter(decl, {prop: 'background-size', value: '100% 100%'});
 				}
 			});
 		});
