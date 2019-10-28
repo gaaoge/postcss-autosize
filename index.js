@@ -45,6 +45,7 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 			width: true,
 			height: true,
 			backgroundSize: true,
+			backgroundRepeat: true,
 			imagePath: []
 		}, options);
 
@@ -68,6 +69,7 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 				var CSSWidth = false;
 				var CSSHeight = false;
 				var CSSBGSize = false;
+				var CSSBGRepeat = false;
 
 				var matchValue = imageRegex.exec(value);
 
@@ -94,6 +96,9 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 					}
 					if (node.prop === 'background-size' || node.prop === '-webkit-background-size') {
 						CSSBGSize = true;
+					}
+					if (node.prop === 'background-repeat') {
+						CSSBGRepeat = true;
 					}
 				});
 
@@ -141,6 +146,10 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 
 				if (options.backgroundSize && !CSSBGSize) {
 					rule.insertAfter(decl, {prop: 'background-size', value: '100% 100%'});
+				}
+
+				if (options.backgroundRepeat && !CSSBGRepeat) {
+					rule.insertAfter(decl, {prop: 'background-repeat', value: 'no-repeat'});
 				}
 			});
 		});
