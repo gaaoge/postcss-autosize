@@ -11,8 +11,6 @@ var fastImageSize = require('./lib/fastimagesize')
  * deal with the issue like `../../img.jpg` and so on.
  */
 function fixAbsolutePath(dir, relative) {
-  if(/^(http(s)?:)?\/\//.test(dir)) return dir;
-
   // find the first time
   var absolute = path.resolve(dir, relative)
 
@@ -92,7 +90,7 @@ module.exports = postcss.plugin('lazyimagecss', function (options) {
 
         var absolutePath = fixAbsolutePath(inputDir, relativePath)
 
-        if (absolutePath === undefined) {
+        if (absolutePath === undefined || /^(http(s)?:)?\/\//.test(relativePath)) {
           return
         }
 
