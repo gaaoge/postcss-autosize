@@ -32,14 +32,14 @@ function fixAbsolutePath(dir, relative) {
 
 function pluginLog(str, arg) {
   return console.log(
-    '[' + chalk.blue('postcss-lazyimagecss') + '] ' + chalk.red(str) + arg
+    '[' + chalk.blue('postcss-autosize') + '] ' + chalk.red(str) + arg
   )
 }
 
 /**
  * main function
  */
-module.exports = postcss.plugin('lazyimagecss', function (options) {
+module.exports = postcss.plugin('autosize', function (options) {
   return function (css) {
     options = options || {}
 
