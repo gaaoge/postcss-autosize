@@ -1,6 +1,6 @@
 {
   "name": "postcss-autosize",
-  "version": "1.2.0",
+  "version": "2.0.0",
   "description": "A PostCSS plugin that generates images's CSS width & height properties from stylesheets automatically.",
   "main": "index.js",
   "directories": {
@@ -8,8 +8,7 @@
   },
   "dependencies": {
     "chalk": "^4.1.0",
-    "lodash": "^4.17.20",
-    "postcss": "^8.1.10"
+    "lodash": "^4.17.20"
   },
   "devDependencies": {
     "eslint": "^3.7.1",
@@ -19,9 +18,13 @@
     "gulp-mocha": "^4.1.0",
     "gulp-postcss": "^7.0.0",
     "mocha": "^3.4.2",
+    "postcss": "^8.4.40",
     "should": "^11.1.0",
     "through2": "^2.0.1",
     "vinyl-fs": "^2.4.3"
+  },
+  "peerDependencies": {
+    "postcss": "^8.4.40"
   },
   "scripts": {
     "test": "mocha --repotter spec test"
